@@ -3,3 +3,7 @@ __pycache__/
 *.csv
 .astro/
 .env
+.astro
+target/
+dags/__pycache__
+include/__pycache__
