@@ -2,8 +2,14 @@ import requests
 import boto3
 import json
 from datetime import datetime 
+from dotenv import load_dotenv
+import os
 
 load_dotenv()
+
+#SETUP
+MOCKAROO_URL = "https://my.api.mockaroo.com/lumina_tickets.json?key=178108a0"
+BUCKET_NAME = "luminacare-datalake-luis"
 
 def test_upload():
     print("Getting date from Mockaroo....")
@@ -15,8 +21,8 @@ def test_upload():
 
     s3 = boto3.client(
         's3',
-        aws_access_key_id=ACCESS_KEY,
-        aws_secret_access_key=SECRET_KEY
+        aws_access_key_id=os.getenv("ACCESS_KEY"),
+        aws_secret_access_key=os.getenv("SECRET_KEY")
     )
     
     s3.put_object(
